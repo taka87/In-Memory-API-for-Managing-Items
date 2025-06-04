@@ -4,7 +4,7 @@ A simple RESTful API for managing items (in memory) using Node.js, Express and T
 
 ---
 
-## 📦 Technologies Used
+## 📦 Technologies
 
 - Node.js
 - TypeScript
@@ -13,7 +13,7 @@ A simple RESTful API for managing items (in memory) using Node.js, Express and T
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Getting Started (Installation)
 
 ### 1. Clone the repository
 
@@ -66,7 +66,31 @@ Response:
 
 If invalid input:
 { "error": "Name is required and must be a string" }
+----------------------------------------
+## 🧪 Testing with Postman
 
+You can also test the API using [Postman](https://www.postman.com/) as an alternative to manual cURL or frontend requests.
+
+### ➤ GET /items
+
+- **URL**: `http://localhost:3000/items`
+- **Method**: `GET`
+- **Description**: Returns an array of all items currently stored in memory.
+
+### ➤ POST /items
+
+- **URL**: `http://localhost:3000/items`
+- **Method**: `POST`
+- **Headers**:  
+  - `Content-Type: application/json`
+- **Body (raw JSON)**:
+  ```json
+  {
+    "name": "Example Item"
+  }
+Description: Adds a new item with a unique ID and returns the created object.
+
+✅ All endpoints have been tested successfully with Postman during development.
 ----------------------------------------
 📁 Project Structure
 
