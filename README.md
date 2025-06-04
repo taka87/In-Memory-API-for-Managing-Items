@@ -18,8 +18,9 @@ A simple RESTful API for managing items (in memory) using Node.js, Express and T
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/in-memory-items-api.git
-cd in-memory-items-api
+git clone https://github.com/taka87/In-Memory-API-for-Managing-Items
+cd In-Memory-API-for-Managing-Items # or the folder name you chose when cloning
+    Note: If you renamed the folder while cloning, replace the path accordingly.
 
 2. Install dependencies
 
@@ -29,6 +30,7 @@ npm install
 
 npm run dev
 Open your browser at: http://localhost:3000
+Note: In working order you will see blank list with message "API is running ⚙️" - Enjoy
 
 🧰 Scripts:
 npm run dev – Start with ts-node-dev
