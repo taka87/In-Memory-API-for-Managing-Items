@@ -57,15 +57,13 @@ Command – curl http://localhost:3000/items/3af6bdd2-0cd5-4c89-8d17-a205a57c4f1
 Given result – {"id":"3af6bdd2-0cd5-4c89-8d17-a205a57c4f13","name":"Ananas"}
 
 3. Method – PUT (Update item by ID)
-Command – curl -X PUT http://localhost:3000/items/3af6bdd2-0cd5-4c89-8d17-a205a57c4f13 -H "Content-Type: application/json" -d "{\"name\": \"Ananas (updated)\"}"
-Given result – {"id":"3af6bdd2-0cd5-4c89-8d17-a205a57c4f13","name":"Ananas (updated)"}
+Command – curl -X PUT http://localhost:3000/items/3af6bdd2-0cd5-4c89-8d17-a205a57c4f13 -H "Content-Type: application/json" -d "{\"name\": \"Ananas\"}"
+Given result – {"id":"3af6bdd2-0cd5-4c89-8d17-a205a57c4f13","name":"Ananas"}
 
 4. Method – DELETE (Delete item by ID)
 Command – curl -X DELETE http://localhost:3000/items/3af6bdd2-0cd5-4c89-8d17-a205a57c4f13
-Given result – {"id":"3af6bdd2-0cd5-4c89-8d17-a205a57c4f13","name":"Ananas (updated)"}
-👉 Optional improvement: instead of returning the deleted item, you can return a message like:
-{"message": "Item deleted successfully"}
-(Можем да го добавим, ако искаш.)
+Deleted item – {"id":"3af6bdd2-0cd5-4c89-8d17-a205a57c4f13","name":"Ananas"}
+👉 Optional improvement: instead of returning the deleted item:{"message": "Item deleted successfully"}
 
 ❌ Error cases
 5. ❌ Method – POST (Invalid input - not a string)
