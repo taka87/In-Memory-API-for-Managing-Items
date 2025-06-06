@@ -44,41 +44,41 @@ npm start – Run compiled code (from /dist)
 ----------------------------------------
 📌 API Endpoints - Testing and Results
 
-0. Method – POST (Create item)
+0. Method – POST (Create item) - 201 Created
 Command – curl -X POST http://localhost:3000/items -H "Content-Type: application/json" -d "{\"name\": \"Ananas\"}"
 Given result – {"id":"3af6bdd2-0cd5-4c89-8d17-a205a57c4f13","name":"Ananas"}
 
-1. Method – GET (All items)
+1. Method – GET (All items) - 200 OK
 Command – curl http://localhost:3000/items
 Given result – [{"id":"3af6bdd2-0cd5-4c89-8d17-a205a57c4f13","name":"Ananas"}]
 
-2. Method – GET (Get item by ID)
+2. Method – GET (Get item by ID) - 200 OK
 Command – curl http://localhost:3000/items/3af6bdd2-0cd5-4c89-8d17-a205a57c4f13
 Given result – {"id":"3af6bdd2-0cd5-4c89-8d17-a205a57c4f13","name":"Ananas"}
 
-3. Method – PUT (Update item by ID)
+3. Method – PUT (Update item by ID) - 200 OK
 Command – curl -X PUT http://localhost:3000/items/3af6bdd2-0cd5-4c89-8d17-a205a57c4f13 -H "Content-Type: application/json" -d "{\"name\": \"Ananas\"}"
 Given result – {"id":"3af6bdd2-0cd5-4c89-8d17-a205a57c4f13","name":"Ananas"}
 
-4. Method – DELETE (Delete item by ID)
+4. Method – DELETE (Delete item by ID) 200 OK 
 Command – curl -X DELETE http://localhost:3000/items/3af6bdd2-0cd5-4c89-8d17-a205a57c4f13
 Deleted item – {"id":"3af6bdd2-0cd5-4c89-8d17-a205a57c4f13","name":"Ananas"}
 👉 Optional improvement: instead of returning the deleted item:{"message": "Item deleted successfully"}
 
-❌ Error cases
+❌ Error cases - 400 Bad Request
 5. ❌ Method – POST (Invalid input - not a string)
 Command – curl -X POST http://localhost:3000/items -H "Content-Type: application/json" -d "{\"name\": 123}"
 Given result – {"error":"Name must be a string"}
 
-6. ❌ Method – GET (Invalid ID - not found)
+6. ❌ Method – GET (Invalid ID - not found) - 404 Not Found
 Command – curl http://localhost:3000/items/999
 Given result – {"error":"Item not found"}
 
-7. ❌ Method – PUT (Invalid input - not a string)
+7. ❌ Method – PUT (Invalid input - not a string) - 	400 Bad Request
 Command – curl -X PUT http://localhost:3000/items/999 -H "Content-Type: application/json" -d "{\"name\": 123}"
 Given result – {"error":"Name must be a string"}
 
-8. ❌ Method – DELETE (Invalid ID - not found)
+8. ❌ Method – DELETE (Invalid ID - not found) - 	404 Not Found
 Command – curl -X DELETE http://localhost:3000/items/999
 Given result – {"error":"Item not found"}
 
