@@ -17,6 +17,19 @@ GET, POST, PUT, DELETE. Custom response messages implemented for consistent succ
 
 ---
 
+✅ Implemented Features:
+- In-memory storage of items (no database used)
+- Create Item – via POST /items with JSON body
+- Get All Items – via GET /items
+- Get Single Item by ID – via GET /items/:id
+- Update Item by ID – via PUT /items/:id with validation
+- Delete Item by ID – via DELETE /items/:id
+- Error Handling – proper 400/404 responses with clear JSON messages
+- UUID-based IDs – each item gets a unique identifier
+- Clean code structure using Express + TypeScript
+
+---
+
 ## 🚀 Getting Started (Installation)
 
 ### 1. Clone the repository
