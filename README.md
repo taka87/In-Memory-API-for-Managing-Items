@@ -1,6 +1,10 @@
-# 🧠 In-Memory Items API (Node.js + TypeScript)
+# 🧠 In-Memory Items API (Node.js + TypeScript) - Implemented(Task 3 + Task 4)
 
-A simple RESTful API for managing items (in memory) using Node.js, Express and TypeScript. The app allows you to create and retrieve items through HTTP endpoints.
+A simple RESTful API for managing items (in memory) using Node.js, Express and TypeScript.  
+The app allows you to create, retrieve, update and delete items through HTTP endpoints.  
+Each item is assigned a UUID, and request validation is in place to ensure data integrity.  
+The API returns clear error messages for invalid requests and supports standard RESTful methods:  
+GET, POST, PUT, DELETE. Custom response messages implemented for consistent success and error handling
 
 ---
 
@@ -38,36 +42,50 @@ npm run build – Compile TypeScript
 npm start – Run compiled code (from /dist)
 
 ----------------------------------------
-📌 API Endpoints
-GET /items
-Returns all items currently stored in memory.
+📌 API Endpoints - Testing and Results
 
-Example:
-curl http://localhost:3000/items
+0. Method – POST (Create item)
+Command – curl -X POST http://localhost:3000/items -H "Content-Type: application/json" -d "{\"name\": \"Ananas\"}"
+Given result – {"id":"3af6bdd2-0cd5-4c89-8d17-a205a57c4f13","name":"Ananas"}
 
-Response:
-[
-  { "id": "uuid1", "name": "Banana" },
-  { "id": "uuid2", "name": "Apple" }
-]
+1. Method – GET (All items)
+Command – curl http://localhost:3000/items
+Given result – [{"id":"3af6bdd2-0cd5-4c89-8d17-a205a57c4f13","name":"Ananas"}]
 
-POST /items
-Adds a new item. The body must contain a name (string).
+2. Method – GET (Get item by ID)
+Command – curl http://localhost:3000/items/3af6bdd2-0cd5-4c89-8d17-a205a57c4f13
+Given result – {"id":"3af6bdd2-0cd5-4c89-8d17-a205a57c4f13","name":"Ananas"}
 
-Example:
-curl -X POST http://localhost:3000/items \
-  -H "Content-Type: application/json" \
-  -d '{ "name": "Orange" }'
-Response:
-{
-  "id": "generated-uuid",
-  "name": "Orange"
-}
+3. Method – PUT (Update item by ID)
+Command – curl -X PUT http://localhost:3000/items/3af6bdd2-0cd5-4c89-8d17-a205a57c4f13 -H "Content-Type: application/json" -d "{\"name\": \"Ananas (updated)\"}"
+Given result – {"id":"3af6bdd2-0cd5-4c89-8d17-a205a57c4f13","name":"Ananas (updated)"}
 
-If invalid input:
-{ "error": "Name is required and must be a string" }
+4. Method – DELETE (Delete item by ID)
+Command – curl -X DELETE http://localhost:3000/items/3af6bdd2-0cd5-4c89-8d17-a205a57c4f13
+Given result – {"id":"3af6bdd2-0cd5-4c89-8d17-a205a57c4f13","name":"Ananas (updated)"}
+👉 Optional improvement: instead of returning the deleted item, you can return a message like:
+{"message": "Item deleted successfully"}
+(Можем да го добавим, ако искаш.)
+
+❌ Error cases
+5. ❌ Method – POST (Invalid input - not a string)
+Command – curl -X POST http://localhost:3000/items -H "Content-Type: application/json" -d "{\"name\": 123}"
+Given result – {"error":"Name must be a string"}
+
+6. ❌ Method – GET (Invalid ID - not found)
+Command – curl http://localhost:3000/items/999
+Given result – {"error":"Item not found"}
+
+7. ❌ Method – PUT (Invalid input - not a string)
+Command – curl -X PUT http://localhost:3000/items/999 -H "Content-Type: application/json" -d "{\"name\": 123}"
+Given result – {"error":"Name must be a string"}
+
+8. ❌ Method – DELETE (Invalid ID - not found)
+Command – curl -X DELETE http://localhost:3000/items/999
+Given result – {"error":"Item not found"}
+
 ----------------------------------------
-## 🧪 Testing with Postman
+## 🧪 Testing with Postman (Tested During Task 3)
 
 You can also test the API using [Postman](https://www.postman.com/) as an alternative to manual cURL or frontend requests.
 
@@ -109,7 +127,7 @@ TypeScript interfaces ensure structure of data.
 Data is stored in memory only, and is lost on server restart.
 
 ----------------------------------------
-✅ Assignment Criteria Covered
+✅ Assignment Criteria Covered - Task 3
 ✔️ Node.js project setup with npm
 ✔️ TypeScript configured with tsconfig.json
 ✔️ Express installed and used for routing
@@ -118,3 +136,9 @@ Data is stored in memory only, and is lost on server restart.
 ✔️ UUIDs used for unique id
 ✔️ Proper request validation and HTTP status codes
 ✔️ Clean and modular code structure
+Additional Task 4:
+✔️ PUT /items/:id endpoint for updating items  
+✔️ DELETE /items/:id endpoint for deleting items  
+✔️ Validation for PUT and DELETE requests  
+✔️ Error handling for invalid UUIDs and missing items  
+✔️ Descriptive success and error messages in JSON format  
